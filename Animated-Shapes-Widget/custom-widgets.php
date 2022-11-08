@@ -23,7 +23,7 @@ class My_Elementor_Widgets {
 
 }
 
-add_action( 'init', 'my_elementor_init' );
+
 function my_elementor_init() {
 	My_Elementor_Widgets::get_instance();
 }
@@ -40,4 +40,10 @@ function add_elementor_widget_categories( $elements_manager ) {
 	);
 	
 }
-add_action( 'elementor/elements/categories_registered', 'add_elementor_widget_categories' );
+
+if (class_exists('Widget_Base')){
+
+	add_action( 'init', 'my_elementor_init' );
+	add_action( 'elementor/elements/categories_registered', 'add_elementor_widget_categories' );
+
+}
